@@ -1,15 +1,15 @@
-import { model , Schema} from "mongoose";
+import { model, Schema } from "mongoose";
 
 const userSchema = new Schema({
     firstName: {
         type: String,
-        required:true,
-        trim :true
+        required: true,
+        trim: true
     },
     lastName: {
         type: String,
-        required:true,
-        trim :true
+        required: true,
+        trim: true
     },
 
     email: {
@@ -30,4 +30,18 @@ const userSchema = new Schema({
         required: true,
         // default: 
     },
-})
+
+    imageUrlId: {
+        type: String,
+        unique: true
+    },
+    role: {
+        type: String,
+        enum: ['user', 'admin'],
+        default: 'user'
+    }
+}, { timestamps: true });
+
+const User = model('User', userSchema);
+
+export default User;
