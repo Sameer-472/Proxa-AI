@@ -38,7 +38,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 
-
+app.use("/api/v1/user" )
 app.get('/', (req, res) => {
     res.send("Hello HTTPS server")
 });
