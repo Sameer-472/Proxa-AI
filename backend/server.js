@@ -1,9 +1,3 @@
-// const cookieParser = require('cookie-parser');
-// const express = require('express');
-// const rateLimit = require('express-rate-limit')
-// const morgan = require('morgan');
-// const helmet = require('helmet');
-// const dotenv = require('dotenv');
 import cookieParser from "cookie-parser";
 import express from 'express';
 import rateLimit from "express-rate-limit";
@@ -11,10 +5,9 @@ import morgan from "morgan";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import { ConnectDB } from "./config/db.js";
-
+import userRoutes from "./routes/user.router.js";
 // import cookieParser = require("cookie-parser");
 // const { ConnectDB } = require('./config/db');
-
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -38,7 +31,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 
-app.use("/api/v1/user" )
+app.use("/api/v1/user", userRoutes);
+
 app.get('/', (req, res) => {
     res.send("Hello HTTPS server")
 });

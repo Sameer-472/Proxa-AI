@@ -24,17 +24,16 @@ const userSchema = new Schema({
         required: true
     },
 
-    imageUrl: {
-        type: String,
-        unique: true,
-        required: true,
-        // default: 
-    },
+    // imageUrl: {
+    //     type: String,
+    //     unique: false,
+    //     required: false,
+    // },
 
-    imageUrlId: {
-        type: String,
-        unique: true
-    },
+    // imageUrlId: {
+    //     type: String,
+    //     unique: false
+    // },
     role: {
         type: String,
         enum: ['user', 'admin'],
