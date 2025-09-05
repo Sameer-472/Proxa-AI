@@ -13,9 +13,9 @@ export const register = async (req, res) => {
             return res.status(401).json({ message: "User already exist", success: false });
         }
 
-        // const imageUrl = req.file;
+        const imageUrl = req.file;
 
-        // const profileImage = await UploadImage(imageUrl);
+        const profileImage = await UploadImage(imageUrl);
 
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = User.create({
@@ -24,8 +24,8 @@ export const register = async (req, res) => {
             email,
             password: hashedPassword,
             role,
-            // imageUrl: profileImage.secure_url,
-            // imageUrlId: profileImage.public_id
+            imageUrl: profileImage.secure_url,
+            imageUrlId: profileImage.public_id
         })
 
         if (newUser) {
