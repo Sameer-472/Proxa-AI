@@ -4,6 +4,7 @@ import rateLimit from "express-rate-limit";
 import morgan from "morgan";
 import helmet from "helmet";
 import dotenv from "dotenv";
+dotenv.config();
 import { ConnectDB } from "./config/db.js";
 import userRoutes from "./routes/user.router.js";
 import aiRoutes from "./routes/ai.routes.js";
@@ -13,7 +14,6 @@ import aiRoutes from "./routes/ai.routes.js";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-dotenv.config();
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
