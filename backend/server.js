@@ -9,6 +9,7 @@ import { ConnectDB } from "./config/db.js";
 import userRoutes from "./routes/user.router.js";
 import aiRoutes from "./routes/ai.routes.js";
 import feedbackRoutes from "./routes/feedback.routes.js";
+import paymentPlanRoutes from "./routes/feedback.routes.js";
 // import cookieParser = require("cookie-parser");
 // const { ConnectDB } = require('./config/db');
 
@@ -36,6 +37,7 @@ app.use(cookieParser());
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/ai" , aiRoutes);
 app.use("/api/v1/feedback" , feedbackRoutes);
+app.use("/api/v1/plan" , paymentPlanRoutes)
 
 app.get('/', (req, res) => {
     res.send("Hello HTTPS server")

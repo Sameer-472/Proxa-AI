@@ -1,4 +1,4 @@
-import FeedbackForm from "../models/feedback-form-model";
+import FeedbackForm from "../models/feedback-form-model.js";
 
 export const createFeedbackForm = async (req, res) => {
     const { userId, feedback } = req.body;
