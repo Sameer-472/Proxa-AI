@@ -10,10 +10,18 @@ import userRoutes from "./routes/user.router.js";
 import aiRoutes from "./routes/ai.routes.js";
 import feedbackRoutes from "./routes/feedback.routes.js";
 import paymentPlanRoutes from "./routes/feedback.routes.js";
+import cors from "cors";
 // import cookieParser = require("cookie-parser");
 // const { ConnectDB } = require('./config/db');
 
 const app = express();
+app.use(cors({
+  origin: "http://localhost:3000",  // frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
+
 const PORT = process.env.PORT || 5000;
 
 

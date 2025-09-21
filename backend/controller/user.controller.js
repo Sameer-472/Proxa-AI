@@ -49,7 +49,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-
+        console.log("its running")
         const userExist = await User.findOne({ email });
         if (!userExist) {
             res.status(401).json({ message: "User does not exist", success: false });
@@ -64,6 +64,7 @@ export const login = async (req, res) => {
         generateToken(userExist._id, res);
         res.status(200).json({ message: "Login successful", success: true, user: userExist });
     } catch (error) {
+        console.log("error while login" , error)
         res.status(401).json({ message: error.message, success: false });
     }
 }

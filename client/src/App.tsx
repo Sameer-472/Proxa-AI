@@ -1,29 +1,41 @@
-import {ToastContainer} from 'react-toastify';
-import  {Outlet} from 'react-router-dom';
-import './App.css'
-import FooterComponents from './components/FooterComponents';
+import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { useAppDispatch } from "./hooks/hooks";
+import { useEffect } from "react";
+import { useCheckAuth } from "./api/authApi";
+import { setUser } from "./redux/slice/authSlice";
+import FooterComponents from "./components/FooterComponents";
+//  import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+export default function App() {
+  const dispatch = useAppDispatch();
+  const { data: user, isError } = useCheckAuth();
+
+  useEffect(() => {
+    if (user) {
+      dispatch(setUser(user));
+    }
+
+    if (isError) {
+      dispatch(setUser(null));
+    }
+  }, [user, dispatch, isError]);
   return (
-    <>
-      <div>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
-        <Outlet />
-        <FooterComponents />
-      </div>
-    </>
-  )
+    <div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <Outlet />
+      <FooterComponents />
+    </div>
+  );
 }
-
-export default App
