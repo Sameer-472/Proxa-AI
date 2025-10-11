@@ -36,7 +36,7 @@ export const useSignUp = () => {
     mutationFn: async (formData: FormData) => {
       const response = await axiosClient.post(`/user/signUp`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
       });
       return response.data;

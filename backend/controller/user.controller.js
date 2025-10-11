@@ -4,6 +4,7 @@ import { UploadImage } from "../utils/uploadImage.js";
 import bcrypt from "bcryptjs";
 
 export const register = async (req, res) => {
+    console.log("req body" , req);
     try {
         const { firstName, lastName, email, password, role } = req.body;
 
@@ -86,6 +87,7 @@ export const checkAuth = async (req, res) => {
     try {
         res.status(200).json({ message: "User is authenticated", success: true });
     } catch (error) {
+        console.log("here is the error" , error)
         res.status(401).json({ message: error.message, success: false });
     }
 }
