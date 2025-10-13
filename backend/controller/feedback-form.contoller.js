@@ -1,7 +1,9 @@
 import FeedbackForm from "../models/feedback-form-model.js";
 
 export const createFeedbackForm = async (req, res) => {
-    const { userId, feedback } = req.body;
+    const { feedback } = req.body;
+
+    const userId = req.cookies.userId;
 
     if (!userId || !feedback) {
         return res.status(400).json({ message: "All fields are required", success: false })

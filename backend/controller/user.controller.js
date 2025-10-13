@@ -4,7 +4,7 @@ import { UploadImage } from "../utils/uploadImage.js";
 import bcrypt from "bcryptjs";
 
 export const register = async (req, res) => {
-    console.log("req body" , req);
+    console.log("req body", req);
     try {
         const { firstName, lastName, email, password, role } = req.body;
 
@@ -56,16 +56,21 @@ export const login = async (req, res) => {
             res.status(401).json({ message: "User does not exist", success: false });
         }
 
-        const isPasswordCorrect = await bcrypt.compare(password , userExist.password);
+        console.log("userExist its user id is ...", userExist._id.toString());
+        const isPasswordCorrect = await bcrypt.compare(password, userExist.password);
 
         if (!isPasswordCorrect) {
             return res.status(401).json({ message: "Invalid credentials", success: false });
         }
 
+        const userId = userExist._id.toString();
+
+        res.cookie('userId', userId);
+
         generateToken(userExist._id, res);
         res.status(200).json({ message: "Login successful", success: true, user: userExist });
     } catch (error) {
-        console.log("error while login" , error)
+        console.log("error while login", error)
         res.status(401).json({ message: error.message, success: false });
     }
 }
@@ -78,7 +83,7 @@ export const logout = async (req, res) => {
             sameSite: 'none',
             secure: false
         })
-        res.status(200).json({message: "Logout Successfully" , success: true})
+        res.status(200).json({ message: "Logout Successfully", success: true })
     } catch (error) {
         console.log("Error in logout controller", error.message);
         res.status(401).json({ message: error.message, success: false });
@@ -89,7 +94,7 @@ export const checkAuth = async (req, res) => {
     try {
         res.status(200).json({ message: "User is authenticated", success: true });
     } catch (error) {
-        console.log("here is the error" , error)
+        console.log("here is the error", error)
         res.status(401).json({ message: error.message, success: false });
     }
 }
