@@ -40,7 +40,7 @@ export default function ArticleForm() {
   }
 
   return (
-    <Card className="w-full h-full">
+    <Card className="w-full">
         <CardHeader className="flex items-center space-x-2">
             <Sparkles className="h-4 w-4 mr-2" size={52} />
             <h2 className="text-lg font-semibold">Article Configuration</h2>

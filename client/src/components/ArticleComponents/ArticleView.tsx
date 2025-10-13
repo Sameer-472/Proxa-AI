@@ -6,7 +6,7 @@ import MDEditor from "@uiw/react-md-editor";
 export default function ArticleView() {
   const { isLoading, article } = useAppSelector((state) => state.articles);
   return (
-    <Card className="w-full">
+    <Card className="w-full h-full">
       <CardHeader className="flex items-center space-x-2">
         <SquarePen className="h-4 w-4 mr-2" />
         <h2 className="text-lg font-semibold">Article Configuration</h2>

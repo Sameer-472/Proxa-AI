@@ -72,11 +72,13 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
     try {
+        console.log("logout API hit")
         res.clearCookie("token", {
             httpOnly: true,
             sameSite: 'none',
             secure: false
         })
+        res.status(200).json({message: "Logout Successfully" , success: true})
     } catch (error) {
         console.log("Error in logout controller", error.message);
         res.status(401).json({ message: error.message, success: false });
