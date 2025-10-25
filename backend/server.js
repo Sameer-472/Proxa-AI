@@ -51,10 +51,6 @@ app.get('/', (req, res) => {
     res.send("Hello HTTPS server")
 });
 
-app.listen(PORT, () => {
-    console.log(`server is running on  http://localhost:${PORT}`)
-    ConnectDB();
-})
 
 const startServer = async()=> {
     await ConnectDB();
