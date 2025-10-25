@@ -55,3 +55,12 @@ app.listen(PORT, () => {
     console.log(`server is running on  http://localhost:${PORT}`)
     ConnectDB();
 })
+
+const startServer = async()=> {
+    await ConnectDB();
+    app.listen(PORT, () => {
+    console.log(`server is running on  http://localhost:${PORT}`)
+})
+}
+
+startServer();
