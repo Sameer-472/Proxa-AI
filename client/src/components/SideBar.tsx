@@ -132,7 +132,8 @@ function DashboardSidebar({ closeSheet }: { closeSheet?: () => void }) {
           </Button>
         </Link> */}
 
-        <Button
+        <Link to={"/pdf-summarizer"}>
+          <Button
             variant="ghost"
             className="w-full justify-start"
             onClick={() => {toast.success("PDF Summarizer is under development!"); if (closeSheet) closeSheet();}}
@@ -140,6 +141,7 @@ function DashboardSidebar({ closeSheet }: { closeSheet?: () => void }) {
             <File className="mr-2 h-4 w-4" />
             PDF Summarizer
           </Button>
+        </Link>
 
         {/* Community Link */}
         {/* <Link to={"/home/feedback-form"}>

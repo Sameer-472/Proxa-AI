@@ -76,6 +76,10 @@ const routes = createBrowserRouter([
         path: "resume",
         element: <ResumePage />
       },
+      {
+        path: "pdf-summarizer",
+        element: <ResumePage />
+      },
     ],
   },
 ]);
